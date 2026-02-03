@@ -20,6 +20,8 @@ project "Octopus"
 	location "Octopus"
 	kind "StaticLib"
 	language "C++"
+	cppdialect "C++20"
+	staticruntime "on"
 	buildoptions{"/utf-8"}
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
@@ -48,27 +50,30 @@ project "Octopus"
 	}
 
 	filter "system:windows"
-		cppdialect "C++20"
-		staticruntime "On"
 		systemversion "latest"
 	
 	filter "configurations:Debug"
-		symbols "On"
 		defines
 		{
+			"OC_DEBUG",
 			"ENABLE_ASSERTS"
 		}
+		symbols "On"
 
 	filter "configurations:Release"
+		defines "OC_RELEASE"
 		optimize "On"
 
 	filter "configurations:Dist"
+		defines "OC_DIST"
 		optimize "On"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	cppdialect "C++20"
+	staticruntime "on"
 	buildoptions{"/utf-8"}
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
@@ -93,19 +98,20 @@ project "Sandbox"
 	}
 
 	filter "system:windows"
-		cppdialect "C++20"
-		staticruntime "On"
 		systemversion "latest"
 	
 	filter "configurations:Debug"
-		symbols "On"
 		defines
 		{
+			"OC_DEBUG",
 			"ENABLE_ASSERTS"
 		}
+		symbols "On"
 
 	filter "configurations:Release"
+		defines "OC_RELEASE"
 		optimize "On"
 
 	filter "configurations:Dist"
+		defines "OC_DIST"
 		optimize "On"
