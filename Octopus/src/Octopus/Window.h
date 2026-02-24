@@ -12,11 +12,11 @@ namespace Octopus {
 	struct WindowProps
 	{
 		std::string Title;
-		unsigned int Width, Height;
+		uint32_t Width, Height;
 
 		WindowProps(const std::string& title = "Octopus Engine",
-					unsigned int width = 1280,
-					unsigned int height = 720)
+					uint32_t width = 1280,
+					uint32_t height = 720)
 			: Title(title), Width(width), Height(height) { }
 	};
 
@@ -30,8 +30,8 @@ namespace Octopus {
 
 		void OnUpdate();
 
-		unsigned int GetWidth() const { return m_Data.Width; }
-		unsigned int GetHeight() const { return m_Data.Height; }
+		uint32_t GetWidth() const { return m_Data.Width; }
+		uint32_t GetHeight() const { return m_Data.Height; }
 
 		void SetEventCallback(const EventCallbackFn& callback) { m_Data.EventCallback = callback; }
 		void SetVSync(bool enabled);
@@ -45,7 +45,7 @@ namespace Octopus {
 		struct WindowData
 		{
 			std::string Title;
-			unsigned int Width, Height;
+			uint32_t Width, Height;
 			bool VSync;
 
 			EventCallbackFn EventCallback;
